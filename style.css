@@ -1,0 +1,24 @@
+body {
+    background-color: #1cb5e0;
+}
+#simon0 {
+    background: red;
+}
+
+#simon1 {
+    top: 0;
+    right: 0;
+    background: blue;
+}
+
+#simon2 {
+    bottom: 0;
+    right: 0;
+    background: green;
+}
+
+#simon3 {
+    bottom: 0;
+    left: 0;
+    background: #ffc371;
+}
