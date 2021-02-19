@@ -3,8 +3,8 @@ const buttons = document.getElementsByClassName('simon-button')
 
 // arrays to hold the player and computer choices
 const playerArray = [];
-
 const computerArray = [];
+
 // hold audio files inside of the array
 let audioFiles = [];
 
@@ -22,7 +22,7 @@ audioFiles[3] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3
 // for loop that adds eventListeners to the buttons that pushes the value into the playerArray
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
-        playerArray.push(i)
+        playerArray.unshift(i)
         audioFiles[i].play()
     })
 }
@@ -30,7 +30,7 @@ for (let i = 0; i < buttons.length; i++) {
 // generates the computers choice and calls the playComputerArracy function 
 function generateComputerChoice() {
     choice = Math.floor(Math.random() * 4)
-    computerArray.push(choice)
+    computerArray.unshift(choice)
     length = computerArray.length
     // console.log(length)
     playComputerArray(length)
@@ -42,15 +42,15 @@ function playComputerArray(length) {
     if (length > 0) {
         length = length - 1
 
-			// using recursion to avoid javasctipts asynchronousity
-			setTimeout(() => {
-				num = generateLocation(counter, length)
-				counter =+ 1
-				// console.log(num)
-				audioFiles[num].play();
-				playComputerArray(length);
-			}, 1000);
-		} else {
+        // using recursion to avoid javasctipts asynchronousity
+        setTimeout(() => {
+            num = generateLocation(counter, length)
+            counter = +1
+            // console.log(num)
+            audioFiles[num].play();
+            playComputerArray(length);
+        }, 1000);
+    } else {
         console.log('end of loop')
     }
 
@@ -58,15 +58,14 @@ function playComputerArray(length) {
 
 // pulls the value from the array index for the playComputerArray function
 function generateLocation(length, counter) {
-        // console.log(counter)
-        console.log(computerArray[counter])
-        return computerArray[counter]
-    
+    console.log(counter)
+    // console.log(computerArray[counter])
+    return computerArray[counter]
 }
 
 function checkArrays(length, playerArray) {
-	for (let i = 0; i < length; i++) {
-		console.log(computerArray[i]);
-		console.log(playerArray[i]);
-	}
+    for (let i = 0; i < length; i++) {
+        console.log(computerArray[i]);
+        console.log(playerArray[i]);
+    }
 }
