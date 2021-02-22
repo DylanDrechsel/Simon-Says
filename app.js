@@ -2,7 +2,7 @@
 const buttons = document.getElementsByClassName('simon-button')
 
 // arrays to hold the player and computer choices
-const playerArray = [];
+let playerArray = [];
 const computerArray = [];
 
 // hold audio files inside of the array
@@ -27,9 +27,9 @@ for (let i = 0; i < buttons.length; i++) {
     })
 }
 
-// pushs players choice into their array
-function pushPlayerChoice(playerArray) {
-
+// clears the player array before the next round
+function clearPlayerArray() {
+    playerArray = [];
 }
 
 // generates the computers choice and calls the playComputerArracy function 
@@ -70,6 +70,7 @@ function generateLocation(counter) {
     return computerArray[counter]
 }
 
+// checks the player and computers arrays... if they match the game continues
 function checkArrays(playerArray, computerArray) {
     if (JSON.stringify(playerArray) == JSON.stringify(computerArray))
         playComputerArray(length, counter);
