@@ -1,5 +1,7 @@
 // grabs all the buttons for simon says
 const buttons = document.getElementsByClassName('simon-button')
+const checkArraysButton = document.getElementById('checkArray')
+
 
 // arrays to hold the player and computer choices
 let playerArray = [];
@@ -24,6 +26,16 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
         playerArray.push(i)
         audioFiles[i].play()
+
+        if (playerArray.length === computerArray.length) {
+					if (JSON.stringify(playerArray) == JSON.stringify(computerArray)) {
+						console.log('hit');
+						clearPlayerArray();
+						generateComputerChoice();
+					} else {
+						console.log('GAMEOVER');
+					}
+				}
     })
 }
 
@@ -31,6 +43,7 @@ for (let i = 0; i < buttons.length; i++) {
 function clearPlayerArray() {
     playerArray = [];
 }
+
 
 // generates the computers choice and calls the playComputerArracy function 
 function generateComputerChoice() {
@@ -47,7 +60,7 @@ function playComputerArray(length, counter) {
     // console.log(length)
     if (length > 0) {
         length = length - 1
-
+        
         // using recursion to avoid javasctipts asynchronousity
         setTimeout(() => {
             num = generateLocation(counter)
@@ -59,8 +72,9 @@ function playComputerArray(length, counter) {
     } else {
         counter = 0;
         console.log('end of loop')
+        // player choice function for i < computerArray.length
+        
     }
-    // checkArrays(computerArray)
 }
 
 // pulls the value from the array index for the playComputerArray function
@@ -70,11 +84,4 @@ function generateLocation(counter) {
     return computerArray[counter]
 }
 
-// checks the player and computers arrays... if they match the game continues
-function checkArrays(playerArray, computerArray) {
-    if (JSON.stringify(playerArray) == JSON.stringify(computerArray))
-        playComputerArray(length, counter);
-        else {
-            console.log('GAMEOVER')
-        }
-}
+
