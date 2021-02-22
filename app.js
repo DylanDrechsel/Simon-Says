@@ -22,7 +22,7 @@ audioFiles[3] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3
 // for loop that adds eventListeners to the buttons that pushes the value into the playerArray
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
-        playerArray.unshift(i)
+        playerArray.push(i)
         audioFiles[i].play()
     })
 }
@@ -30,34 +30,35 @@ for (let i = 0; i < buttons.length; i++) {
 // generates the computers choice and calls the playComputerArracy function 
 function generateComputerChoice() {
     choice = Math.floor(Math.random() * 4)
-    computerArray.unshift(choice)
+    computerArray.push(choice)
     length = computerArray.length
+    // let counter = 0
     // console.log(length)
-    playComputerArray(length)
+    playComputerArray(length, counter)
 }
 
 // using recursion to playComputerArray
-function playComputerArray(length) {
+function playComputerArray(length, counter) {
     // console.log(length)
     if (length > 0) {
         length = length - 1
 
         // using recursion to avoid javasctipts asynchronousity
         setTimeout(() => {
-            num = generateLocation(counter, length)
-            counter = +1
+            num = generateLocation(counter)
+            counter = counter + 1
             // console.log(num)
             audioFiles[num].play();
-            playComputerArray(length);
+            playComputerArray(length, counter);
         }, 1000);
     } else {
+        counter = 0;
         console.log('end of loop')
     }
-
 }
 
 // pulls the value from the array index for the playComputerArray function
-function generateLocation(length, counter) {
+function generateLocation(counter) {
     console.log(counter)
     // console.log(computerArray[counter])
     return computerArray[counter]
