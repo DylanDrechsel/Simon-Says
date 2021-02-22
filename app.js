@@ -14,7 +14,7 @@ let num = 0
 let counter = 0
 
 // adding audio files to the audioFiles array
-audioFiles[0] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+audioFiles[0] = new Audio('audio/Middle C-[AudioTrimmer.com].mp3');
 audioFiles[1] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
 audioFiles[2] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
 audioFiles[3] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
@@ -26,6 +26,7 @@ for (let i = 0; i < buttons.length; i++) {
         playerArray.push(i)
         audioFiles[i].play()
 
+        // adds funtionality to buttons that will check if the player & computer arrays match to determine game state
         if (playerArray.length === computerArray.length) {
 					if (JSON.stringify(playerArray) == JSON.stringify(computerArray)) {
 						console.log('hit');
@@ -54,7 +55,7 @@ function playComputerArray(length, counter) {
     if (length > 0) {
         length = length - 1
         
-        // using recursion to avoid javasctipts asynchronousity
+        // using recursion to avoid javasctipts synchronousity
         setTimeout(() => {
             num = computerArray[counter]
             counter = counter + 1
@@ -63,8 +64,16 @@ function playComputerArray(length, counter) {
             playComputerArray(length, counter);
         }, 1000);
     } else {
+        printDistance(computerArray, counter)
         counter = 0;
         // console.log('end of loop')
         
     }
+}
+
+function printDistance (computerArray, counter) {
+    // console.log(counter)
+    // console.log(computerArray[counter - 2])
+    // console.log(computerArray[counter - 1])
+    console.log(computerArray[counter - 1] - computerArray[counter - 2])
 }
