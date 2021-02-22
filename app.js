@@ -27,6 +27,11 @@ for (let i = 0; i < buttons.length; i++) {
     })
 }
 
+// pushs players choice into their array
+function pushPlayerChoice(playerArray) {
+
+}
+
 // generates the computers choice and calls the playComputerArracy function 
 function generateComputerChoice() {
     choice = Math.floor(Math.random() * 4)
@@ -55,18 +60,20 @@ function playComputerArray(length, counter) {
         counter = 0;
         console.log('end of loop')
     }
+    // checkArrays(computerArray)
 }
 
 // pulls the value from the array index for the playComputerArray function
 function generateLocation(counter) {
-    console.log(counter)
+    // console.log(counter)
     // console.log(computerArray[counter])
     return computerArray[counter]
 }
 
-function checkArrays(length, playerArray) {
-    for (let i = 0; i < length; i++) {
-        console.log(computerArray[i]);
-        console.log(playerArray[i]);
-    }
+function checkArrays(playerArray, computerArray) {
+    if (JSON.stringify(playerArray) == JSON.stringify(computerArray))
+        playComputerArray(length, counter);
+        else {
+            console.log('GAMEOVER')
+        }
 }
