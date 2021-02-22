@@ -1,6 +1,7 @@
 // grabs all the buttons for simon says
 const buttons = document.getElementsByClassName('simon-button')
 const intervalDisplay = document.getElementById('intervalDisplay')
+const score = document.getElementById('score')
 
 // arrays to hold the player and computer choices
 let playerArray = [];
@@ -14,11 +15,14 @@ let num = 0
 let counter = 0
 
 // adding audio files to the audioFiles array
-audioFiles[0] = new Audio('audio/Middle C-[AudioTrimmer.com].mp3');
-audioFiles[1] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
-audioFiles[2] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
-audioFiles[3] = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
-
+audioFiles[0] = new Audio('audio/C.mp3');
+audioFiles[1] = new Audio('audio/D.mp3');
+audioFiles[2] = new Audio('audio/E.mp3');
+audioFiles[3] = new Audio('audio/F.mp3');
+audioFiles[4] = new Audio('audio/G.mp3');
+audioFiles[5] = new Audio('audio/A.mp3');
+audioFiles[6] = new Audio('audio/B.mp3');
+audioFiles[7] = new Audio('audio/C2.mp3');
 
 // for loop that adds eventListeners to the buttons that pushes the value into the playerArray
 for (let i = 0; i < buttons.length; i++) {
@@ -39,6 +43,9 @@ for (let i = 0; i < buttons.length; i++) {
                 // clears player array for next round
                 playerArray = []
 
+                // increases score by 10 for every right answer
+                score.innerHTML = parseInt(score.innerHTML) + 10
+
                 // calls the generateComputerChoice function to continue game
                 generateComputerChoice();
 
@@ -57,8 +64,6 @@ function generateComputerChoice() {
     choice = Math.floor(Math.random() * 8)
     computerArray.push(choice)
     length = computerArray.length
-    // let counter = 0
-    // console.log(length)
     playComputerArray(length, counter)
 }
 
@@ -72,37 +77,24 @@ function playComputerArray(length, counter) {
         setTimeout(() => {
             num = computerArray[counter]
             counter = counter + 1
-            // console.log(num)
-            // audioFiles[num].play();
+            audioFiles[num].play();
             playComputerArray(length, counter);
         }, 1000);
     } else {
         printDistance(computerArray, counter)
         counter = 0;
-        // console.log('end of loop')
-
     }
 }
 
 // used to find the distances between notes so we can find the interval to display on the screen
 function printDistance(computerArray, counter) {
-
-    // console.log(counter)
-    // console.log(computerArray[counter - 2])
-    // console.log(computerArray[counter - 1])
     choice = computerArray[counter - 1] - computerArray[counter - 2]
     if (choice < 0) {
-        console.log(choice)
         choice = choice / -1
-        console.log(choice)
         console.log(intervals[choice])
     } else {
-        console.log(choice)
         console.log(intervals[choice])
     }
-
 }
 
 const intervals = ['same note', 'Major 2nd', 'Major 3rd', 'Perfect 4th', 'Perfect 5th', 'Major 6th', 'Major 7th', 'Octive']
-
-const decendingIntervals = []
