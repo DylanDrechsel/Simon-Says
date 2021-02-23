@@ -1,24 +1,94 @@
 body {
-    background-color: #1cb5e0;
+    font-family: Roboto;
 }
+
 #simon0 {
+    grid-column: 2/3;
+    grid-row: 1;
     background: red;
 }
 
 #simon1 {
-    top: 0;
-    right: 0;
+    grid-column: 6/7;
+    grid-row: 1;
     background: blue;
 }
 
 #simon2 {
-    bottom: 0;
-    right: 0;
+    grid-column: 2/3;
+    grid-row: 2;
     background: green;
 }
 
 #simon3 {
-    bottom: 0;
-    left: 0;
+    grid-column: 6/7;
+    grid-row: 2;
     background: #ffc371;
+}
+
+#simon4 {
+    grid-column: 2/3;
+    grid-row: 3;
+    background: #ffc371;
+}
+
+#simon5 {
+    grid-column: 6/7;
+    grid-row: 3;
+    background: #ffc371;
+}
+
+#simon6 {
+    grid-column: 2/3;
+    grid-row: 4;
+    background: #ffc371;
+}
+
+#simon7 {
+    grid-column: 6/7;
+    grid-row: 4;
+    background: #ffc371;
+}
+
+#start {
+    grid-row: 2/4;
+    grid-column: 4;
+}
+
+#simon {
+
+    /* position: relative; */
+    /* makes the div stay in the center of the screen */
+    margin: 10vh auto;
+    padding: 40px;
+    /* sets the width & height */
+    width: 80vh;
+    height: 80vh;
+    /* makes the max-width & max-height that I want to make a square */
+    max-width: 400px;
+    max-height: 400px;
+
+    background: #000000;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: initial;
+    box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.5);
+}
+
+#button {
+    display: grid;
+    grid-template-columns: 12% 20% 8% 20% 8% 20% 12%;
+    grid-template-rows: 25% 25% 25% 25%;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#intervalDisplay {
+    grid-column: 7/8;
+    font-size: 14px
+}
+
+.disable {
+    pointer-events: none;
 }

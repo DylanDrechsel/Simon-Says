@@ -24,11 +24,25 @@ audioFiles[5] = new Audio('audio/A.mp3');
 audioFiles[6] = new Audio('audio/B.mp3');
 audioFiles[7] = new Audio('audio/C2.mp3');
 
+// sets the opacity of all buttons containing notes
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].style.opacity = 0.2;
+}
+
 // for loop that adds eventListeners to the buttons that pushes the value into the playerArray
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
         playerArray.push(i)
         audioFiles[i].play()
+        buttons[i].style.opacity = 1
+
+
+        if (buttons[i].style.opacity > 0.2) {
+            setTimeout(() => {
+                buttons[i].style.opacity = buttons[i].style.opacity - .8
+            }, 100)
+        }
+
 
         // adds funtionality to buttons that will check if the player & computer arrays match to determine game state
         if (playerArray.length === computerArray.length) {
@@ -49,7 +63,7 @@ for (let i = 0; i < buttons.length; i++) {
                 // calls the generateComputerChoice function to continue game
                 generateComputerChoice();
 
-            // if player array doesnt equal computer array
+                // if player array doesnt equal computer array
             } else {
 
                 // you failed game over
@@ -69,7 +83,8 @@ function generateComputerChoice() {
 
 // using recursion to playComputerArray
 function playComputerArray(length, counter) {
-    // console.log(length)
+    document.getElementById('simon').classList.add('disable');
+
     if (length > 0) {
         length = length - 1
 
@@ -79,9 +94,10 @@ function playComputerArray(length, counter) {
             counter = counter + 1
             audioFiles[num].play();
             playComputerArray(length, counter);
-        }, 1000);
+        }, 1200);
     } else {
         printDistance(computerArray, counter)
+        document.getElementById('simon').classList.remove('disable');
         counter = 0;
     }
 }
