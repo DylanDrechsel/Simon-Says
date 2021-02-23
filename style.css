@@ -68,10 +68,8 @@ body {
     max-width: 400px;
     max-height: 400px;
 
-    background: #000000;
-    background: rgba(0, 0, 0, 0.2);
-    font-size: initial;
-    box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.5);
+    background-color: #0e0d0df3;
+    
 }
 
 #button {
@@ -86,7 +84,12 @@ body {
 
 #intervalDisplay {
     grid-column: 7/8;
-    font-size: 14px
+    font-size: 14px;
+    color: white;
+}
+
+#score {
+    color: white;
 }
 
 .disable {
