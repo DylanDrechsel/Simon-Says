@@ -26,7 +26,7 @@ audioFiles[6] = new Audio('audio/B.mp3');
 audioFiles[7] = new Audio('audio/C2.mp3');
 
 // array for all the musical intervals
-const intervals = ['same note', 'Major 2nd', 'Major 3rd', 'Perfect 4th', 'Perfect 5th', 'Major 6th', 'Major 7th', 'Octive']
+const intervals = ['Same Note', 'Major 2nd', 'Major 3rd', 'Perfect 4th', 'Perfect 5th', 'Major 6th', 'Major 7th', 'Octive']
 
 // sets the opacity of all buttons containing notes
 for (let i = 0; i < buttons.length; i++) {
@@ -78,45 +78,56 @@ for (let i = 0; i < buttons.length; i++) {
             event.target.style.opacity = 0.2;
         }, 600);
     })
+
+    // buttons[i].addEventListener('click', () => {
+    //     length = playerArray.length
+    //     if (playerArray[length] !== computerArray[length]) {
+    //          // you failed game over 
+    //             modal.style.display = 'block';
+
+    //             // makes everything unclickable
+    //             document.getElementById('simon').classList.add('disable');
+    //     }
+    // })
 }
 
-// generates the computers choice and calls the playComputerArracy function 
-function generateComputerChoice() {
-    choice = Math.floor(Math.random() * 8)
-    computerArray.push(choice)
-    length = computerArray.length
-    playComputerArray(length, counter)
-}
+    // generates the computers choice and calls the playComputerArracy function 
+    function generateComputerChoice() {
+        choice = Math.floor(Math.random() * 8)
+        computerArray.push(choice)
+        length = computerArray.length
+        playComputerArray(length, counter)
+    }
 
-// using recursion to playComputerArray
-function playComputerArray(length, counter) {
-    document.getElementById('simon').classList.add('disable');
+    // using recursion to playComputerArray
+    function playComputerArray(length, counter) {
+        document.getElementById('simon').classList.add('disable');
 
-    if (length > 0) {
-        length = length - 1
+        if (length > 0) {
+            length = length - 1
 
-        // using recursion to avoid javasctipts synchronousity
-        setTimeout(() => {
-            num = computerArray[counter]
-            counter = counter + 1
-            audioFiles[num].play();
-            buttons[num].style.opacity = 1
+            // using recursion to avoid javasctipts synchronousity
             setTimeout(() => {
-                buttons[num].style.opacity = 0.2;
-            }, 600)
-            playComputerArray(length, counter);
-        }, 1200);
-    } else {
-        printDistance(computerArray, counter)
-        document.getElementById('simon').classList.remove('disable');
-        counter = 0;
+                num = computerArray[counter]
+                counter = counter + 1
+                audioFiles[num].play();
+                buttons[num].style.opacity = 1
+                setTimeout(() => {
+                    buttons[num].style.opacity = 0.2;
+                }, 600)
+                playComputerArray(length, counter);
+            }, 1200);
+        } else {
+            printDistance(computerArray, counter)
+            document.getElementById('simon').classList.remove('disable');
+            counter = 0;
+        }
     }
-}
 
-// used to find the distances between notes so we can find the interval to display on the screen
-function printDistance(computerArray, counter) {
-    choice = computerArray[counter - 1] - computerArray[counter - 2]
-    if (choice < 0) {
-        choice = choice / -1
+    // used to find the distances between notes so we can find the interval to display on the screen
+    function printDistance(computerArray, counter) {
+        choice = computerArray[counter - 1] - computerArray[counter - 2]
+        if (choice < 0) {
+            choice = choice / -1
+        }
     }
-}
