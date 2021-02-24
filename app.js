@@ -29,7 +29,7 @@ const intervals = ['same note', 'Major 2nd', 'Major 3rd', 'Perfect 4th', 'Perfec
 
 // sets the opacity of all buttons containing notes
 for (let i = 0; i < buttons.length; i++) {
-    buttons[i].style.opacity = 0.2;
+    buttons[i].style.opacity = .2; /* .2 */
 }
 
 // for loop that adds eventListeners to the buttons that pushes the value into the playerArray
@@ -37,32 +37,33 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
         playerArray.push(i)
         audioFiles[i].play()
-        buttons[i].style.opacity = 1
-        
-        
-        if (buttons[i].style.opacity > 0.2) {
-            setTimeout(() => {
-                buttons[i].style.opacity = buttons[i].style.opacity - .8
-            }, 100)
-        }
-        
-        
+        // buttons[i].style.opacity = 1
+
+
+        // if (buttons[i].style.opacity > 0.2) {
+        //     setTimeout(() => {
+        //         buttons[i].style.opacity = buttons[i].style.opacity - .8
+        //     }, 100)
+        // }
+
+
         // adds funtionality to buttons that will check if the player & computer arrays match to determine game state
         if (playerArray.length === computerArray.length) {
-            
+
             // if player array equal computer array 
             if (JSON.stringify(playerArray) == JSON.stringify(computerArray)) {
-                // console.log('hit');
-                
+
                 // sets the innterText to the music interval if answer is correct
-                intervalDisplay.innerText = intervals[choice];
-                
+                if (intervals[choice] !== undefined) {
+                    intervalDisplay.innerText = intervals[choice];
+                }
+
                 // clears player array for next round
                 playerArray = []
-                
+
                 // increases score by 10 for every right answer
                 score.innerHTML = parseInt(score.innerHTML) + 10
-                
+
                 // calls the generateComputerChoice function to continue game
                 generateComputerChoice();
                 
@@ -73,6 +74,13 @@ for (let i = 0; i < buttons.length; i++) {
                 console.log('GAMEOVER');
             }
         }
+    })
+    // animation function for all buttons
+    buttons[i].addEventListener('click', (event) => {
+        event.target.style.opacity = 1;
+				setTimeout(() => {
+					event.target.style.opacity = 0.2;
+				}, 1000);
     })
 }
 
@@ -87,17 +95,19 @@ function generateComputerChoice() {
 // using recursion to playComputerArray
 function playComputerArray(length, counter) {
     document.getElementById('simon').classList.add('disable');
-    
+
     if (length > 0) {
         length = length - 1
-        
+
         // using recursion to avoid javasctipts synchronousity
         setTimeout(() => {
             num = computerArray[counter]
             counter = counter + 1
             audioFiles[num].play();
             buttons[num].style.opacity = 1
-            setTimeout(() => {buttons[num].style.opacity = 0.2;}, 600)
+            setTimeout(() => {
+                buttons[num].style.opacity = 0.2;
+            }, 600)
             playComputerArray(length, counter);
         }, 1200);
     } else {
@@ -112,24 +122,5 @@ function printDistance(computerArray, counter) {
     choice = computerArray[counter - 1] - computerArray[counter - 2]
     if (choice < 0) {
         choice = choice / -1
-        console.log(intervals[choice])
-    } else {
-        console.log(intervals[choice])
-    }
-}
-
-
-
-
-//TESTING ZONE
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', fadeIn(buttons[i]))}
-
-function fadeIn (button) {
-    if (button.style.opacity > .2) {
-        button.style.opacity = button.style.opacity - .1
-        setTimeout(() => {
-            fadeIn()
-        }, 100)
     }
 }

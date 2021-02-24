@@ -5,49 +5,58 @@ body {
 #simon0 {
     grid-column: 2/3;
     grid-row: 1;
-    background: red;
+    background: rgb(255, 238, 0);
+    transition: opacity 1s ease-in;
+    
 }
 
 #simon1 {
     grid-column: 6/7;
     grid-row: 1;
-    background: blue;
+    background: rgb(255, 0, 0);
+    transition: opacity 1s ease-in;
 }
 
 #simon2 {
     grid-column: 2/3;
     grid-row: 2;
-    background: green;
+    background: rgb(0, 60, 255);
+    transition: opacity 1s ease-in;
 }
 
 #simon3 {
     grid-column: 6/7;
     grid-row: 2;
-    background: #ffc371;
+    background: #ff00bf;
+    transition: opacity 1s ease-in;
 }
 
 #simon4 {
     grid-column: 2/3;
     grid-row: 3;
-    background: #ffc371;
+    background: #00aeff;
+    transition: opacity 1s ease-in;
 }
 
 #simon5 {
     grid-column: 6/7;
     grid-row: 3;
-    background: #ffc371;
+    background: #2bff00;
+    transition: opacity 1s ease-in;
 }
 
 #simon6 {
     grid-column: 2/3;
     grid-row: 4;
-    background: #ffc371;
+    background: #f8a93a;
+    transition: opacity 1s ease-in;
 }
 
 #simon7 {
     grid-column: 6/7;
     grid-row: 4;
-    background: #ffc371;
+    background: #6f00ff;
+    transition: opacity 1s ease-in;
 }
 
 #start {
