@@ -78,17 +78,6 @@ for (let i = 0; i < buttons.length; i++) {
             event.target.style.opacity = 0.2;
         }, 600);
     })
-
-    // buttons[i].addEventListener('click', () => {
-    //     length = playerArray.length
-    //     if (playerArray[length] !== computerArray[length]) {
-    //          // you failed game over 
-    //             modal.style.display = 'block';
-
-    //             // makes everything unclickable
-    //             document.getElementById('simon').classList.add('disable');
-    //     }
-    // })
 }
 
     // generates the computers choice and calls the playComputerArracy function 
