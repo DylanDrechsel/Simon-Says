@@ -1,5 +1,6 @@
 body {
     font-family: Roboto;
+    background-color: lightblue;
 }
 
 #simon0 {
@@ -60,13 +61,16 @@ body {
 }
 
 #start {
-    grid-row: 2/4;
+    grid-row: 4;
     grid-column: 4;
+    max-width: 75px;
+    max-height: 50px;
+    background-color:  black;
+    color: white;
 }
 
 #simon {
 
-    /* position: relative; */
     /* makes the div stay in the center of the screen */
     margin: 10vh auto;
     padding: 40px;
@@ -92,7 +96,7 @@ body {
 }
 
 #intervalDisplay {
-    grid-column: 7/8;
+    grid-column: 4/5;
     font-size: 14px;
     color: white;
 }
@@ -103,4 +107,21 @@ body {
 
 .disable {
     pointer-events: none;
+}
+
+#modal {
+    background-color: rgba(255, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: none;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 290px;
 }

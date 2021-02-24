@@ -2,6 +2,7 @@
 const buttons = document.getElementsByClassName('simon-button')
 const intervalDisplay = document.getElementById('intervalDisplay')
 const score = document.getElementById('score')
+const modal = document.getElementById('modal');
 
 // arrays to hold the player and computer choices
 let playerArray = [];
@@ -29,7 +30,7 @@ const intervals = ['same note', 'Major 2nd', 'Major 3rd', 'Perfect 4th', 'Perfec
 
 // sets the opacity of all buttons containing notes
 for (let i = 0; i < buttons.length; i++) {
-    buttons[i].style.opacity = .2; /* .2 */
+    buttons[i].style.opacity = .2;
 }
 
 // for loop that adds eventListeners to the buttons that pushes the value into the playerArray
@@ -37,15 +38,6 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
         playerArray.push(i)
         audioFiles[i].play()
-        // buttons[i].style.opacity = 1
-
-
-        // if (buttons[i].style.opacity > 0.2) {
-        //     setTimeout(() => {
-        //         buttons[i].style.opacity = buttons[i].style.opacity - .8
-        //     }, 100)
-        // }
-
 
         // adds funtionality to buttons that will check if the player & computer arrays match to determine game state
         if (playerArray.length === computerArray.length) {
@@ -66,21 +58,25 @@ for (let i = 0; i < buttons.length; i++) {
 
                 // calls the generateComputerChoice function to continue game
                 generateComputerChoice();
-                
+
                 // if player array doesnt equal computer array
             } else {
-                
-                // you failed game over
-                console.log('GAMEOVER');
+
+                // you failed game over 
+                modal.style.display = 'block';
+
+                // makes everything unclickable
+                document.getElementById('simon').classList.add('disable');
             }
         }
     })
+
     // animation function for all buttons
     buttons[i].addEventListener('click', (event) => {
         event.target.style.opacity = 1;
-				setTimeout(() => {
-					event.target.style.opacity = 0.2;
-				}, 1000);
+        setTimeout(() => {
+            event.target.style.opacity = 0.2;
+        }, 600);
     })
 }
 
