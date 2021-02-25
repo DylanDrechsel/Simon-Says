@@ -12,7 +12,7 @@ Game is played entirely with the mouse
   match the pattern using your mouse
   
 # Preview
- 
+![SIMON SAYS — Mozilla Firefox 2_25_2021 8_55_55 AM](https://user-images.githubusercontent.com/78124357/109166537-cddc8a80-774a-11eb-9c0e-c7d276f9c373.png) 
  
  
 # Technologies Used
@@ -32,6 +32,7 @@ Game is played entirely with the mouse
    As a player, I want to know when the game is over
    
  # Wireframes
+![image](https://user-images.githubusercontent.com/78124357/109166636-eb115900-774a-11eb-9af3-443fcaca2d9f.png)
 
 
 # Hurdles
