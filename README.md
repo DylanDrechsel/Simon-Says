@@ -11,7 +11,7 @@ The Hasbro game Simon Says, written in vanilla JavaScript, with a twist. Its a S
 - match the pattern using your mouse
   
 # Preview
-![SIMON SAYS — Mozilla Firefox 2_25_2021 8_55_55 AM](https://user-images.githubusercontent.com/78124357/109166537-cddc8a80-774a-11eb-9c0e-c7d276f9c373.png) 
+![Simon Says](https://user-images.githubusercontent.com/78124357/109167928-50b21500-774c-11eb-8973-56b772cad9ec.PNG)
  
  
 # Technologies Used
