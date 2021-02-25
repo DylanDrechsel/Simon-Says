@@ -19,9 +19,9 @@ The Hasbro game Simon Says, written in vanilla JavaScript, with a twist. Its a S
  
 # Installation Instructions
  
-  -Fork and clone this repository
-  -Start up local server and open index.html
-  -Fallow instructions in readme on how to play
+- Fork and clone this repository
+- Start up local server and open index.html
+- Fallow instructions in readme on how to play
   
 # User Stories
   
