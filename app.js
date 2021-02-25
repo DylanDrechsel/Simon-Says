@@ -126,3 +126,8 @@ function printDistance(computerArray, counter) {
 		choice = choice / -1;
 	}
 }
+
+// hides the start button when clicked
+function hideStart () {
+	start.style.display = 'none';
+}
