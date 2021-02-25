@@ -45,3 +45,7 @@ Press 'Start!' to being the game
 # Hurdles
   
   fighting javascripts synchronicity to have the audio files play one after each other instead of all at once.
+  
+  *one
+  *two
+  *three
