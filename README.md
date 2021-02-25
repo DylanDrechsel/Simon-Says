@@ -11,9 +11,29 @@ Game is played entirely with the mouse
   wait for the pattern
   match the pattern using your mouse
   
- # Preview
+# Preview
  
  
  
- # Technologies Used
+# Technologies Used
  JavaScript | HTML | CSS
+ 
+# Installation Instructions
+ 
+  Fork and clone this repository
+  Start up local server and open index.html
+  Fallow instructions in readme on how to play
+  
+# User Stories
+  
+   As a player, I need to see the game board so i can get a visual of where to click
+   As a player, I need to have a start button that i can click when I am ready to play
+   As a player, I want to see the score to keep track of my progress
+   As a player, I want to know when the game is over
+   
+ # Wireframes
+
+
+# Hurdles
+  
+  fighting javascripts synchronicity to have the audio files play one after each other instead of all at once.
